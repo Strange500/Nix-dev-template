@@ -22,7 +22,7 @@
         };
 
         lib = nixpkgs.lib;
-        projectLanguages = []; # e.g., [ "python" "java" ]
+        projectLanguages = []; # e.g., [ "js" "python" "java" ]
 
       # Base VSCode extensions
         defaultExtensions = with pkgs.vscode-extensions; [
@@ -75,6 +75,17 @@
               python3
               python3Packages.pip
               python3Packages.virtualenv
+            ];
+          };
+          js = {
+            extension = with pkgs.vscode-extensions; [
+              dbaeumer.vscode-eslint
+              esbenp.prettier-vscode
+            ];
+            pkgs = with pkgs; [
+              nodejs
+              yarn
+              #pm
             ];
           };
         };
