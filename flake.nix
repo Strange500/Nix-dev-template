@@ -22,7 +22,7 @@
         };
 
         lib = nixpkgs.lib;
-        projectLanguages = []; # e.g., [ "js" "python" "java" ]
+        projectLanguages = [ "cplusplus" ]; # e.g., [ "cpluplus" "js" "python" "java" ]
 
       # Base VSCode extensions
         defaultExtensions = with pkgs.vscode-extensions; [
@@ -86,6 +86,17 @@
               nodejs
               yarn
               #pm
+            ];
+          };
+          cplusplus = {
+            extension = with pkgs.vscode-extensions; [
+              ms-vscode.cpptools
+              ms-vscode.cmake-tools
+            ];
+            pkgs = with pkgs; [
+              cmake
+              gcc
+              gdb
             ];
           };
         };
