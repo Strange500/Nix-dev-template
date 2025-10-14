@@ -22,7 +22,7 @@
         };
 
         lib = nixpkgs.lib;
-        projectLanguages = [ "cplusplus" ]; # e.g., [ "cpluplus" "js" "python" "java" ]
+        projectLanguages = [ "rust" ]; # e.g., [ "cpluplus" "js" "python" "java" ]
 
       # Base VSCode extensions
         defaultExtensions = with pkgs.vscode-extensions; [
@@ -97,6 +97,16 @@
               cmake
               gcc
               gdb
+            ];
+          };
+          rust = {
+            extension = with pkgs.vscode-extensions; [
+              rust-lang.rust-analyzer
+              vadimcn.vscode-lldb
+            ];
+            pkgs = with pkgs; [
+              rustc
+              cargo
             ];
           };
         };
